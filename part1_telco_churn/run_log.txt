@@ -1,0 +1,158 @@
+
+==========================================================================================
+PHASE 1 - BUSINESS UNDERSTANDING
+==========================================================================================
+Cost matrix: FN=$500, FP=$100
+
+==========================================================================================
+PHASE 2 - DATA UNDERSTANDING
+==========================================================================================
+Shape: (7043, 21)
+                                 0             1               2
+customerID              7590-VHVEG    5575-GNVDE      3668-QPYBK
+gender                      Female          Male            Male
+SeniorCitizen                    0             0               0
+Partner                        Yes            No              No
+Dependents                      No            No              No
+tenure                           1            34               2
+PhoneService                    No           Yes             Yes
+MultipleLines     No phone service            No              No
+InternetService                DSL           DSL             DSL
+OnlineSecurity                  No           Yes             Yes
+OnlineBackup                   Yes            No             Yes
+DeviceProtection                No           Yes              No
+TechSupport                     No            No              No
+StreamingTV                     No            No              No
+StreamingMovies                 No            No              No
+Contract            Month-to-month      One year  Month-to-month
+PaperlessBilling               Yes            No             Yes
+PaymentMethod     Electronic check  Mailed check    Mailed check
+MonthlyCharges               29.85         56.95           53.85
+TotalCharges                 29.85        1889.5          108.15
+Churn                           No            No             Yes
+                    dtype  n_missing  ...  n_unique           example
+customerID            str          0  ...      7043        7590-VHVEG
+gender                str          0  ...         2            Female
+SeniorCitizen       int64          0  ...         2                 0
+Partner               str          0  ...         2               Yes
+Dependents            str          0  ...         2                No
+tenure              int64          0  ...        73                 1
+PhoneService          str          0  ...         2                No
+MultipleLines         str          0  ...         3  No phone service
+InternetService       str          0  ...         3               DSL
+OnlineSecurity        str          0  ...         3                No
+OnlineBackup          str          0  ...         3               Yes
+DeviceProtection      str          0  ...         3                No
+TechSupport           str          0  ...         3                No
+StreamingTV           str          0  ...         3                No
+StreamingMovies       str          0  ...         3                No
+Contract              str          0  ...         3    Month-to-month
+PaperlessBilling      str          0  ...         2               Yes
+PaymentMethod         str          0  ...         4  Electronic check
+MonthlyCharges    float64          0  ...      1585             29.85
+TotalCharges          str          0  ...      6531             29.85
+Churn                 str          0  ...         2                No
+
+[21 rows x 5 columns]
+Duplicate customer IDs: 0, blank TotalCharges: 11
+Churn rate: 0.265
+  [figure] outputs/figures/01_target_balance.png
+  [figure] outputs/figures/02_numeric_distributions.png
+  [figure] outputs/figures/03_categorical_churn_rates.png
+         feature           test       effect_type  effect_size       p_value
+        Contract     chi-square        Cramer's V     0.410116 5.863038e-258
+  OnlineSecurity     chi-square        Cramer's V     0.347400 2.661150e-185
+     TechSupport     chi-square        Cramer's V     0.342916 1.443084e-180
+ InternetService     chi-square        Cramer's V     0.322455 9.571788e-160
+   PaymentMethod     chi-square        Cramer's V     0.303359 3.682355e-140
+    OnlineBackup     chi-square        Cramer's V     0.292316 2.079759e-131
+DeviceProtection     chi-square        Cramer's V     0.281580 5.505219e-122
+ StreamingMovies     chi-square        Cramer's V     0.230951  2.667757e-82
+     StreamingTV     chi-square        Cramer's V     0.230502  5.528994e-82
+PaperlessBilling     chi-square        Cramer's V     0.191498  4.073355e-58
+      Dependents     chi-square        Cramer's V     0.163870  4.924922e-43
+   SeniorCitizen     chi-square        Cramer's V     0.150453  1.510067e-36
+         Partner     chi-square        Cramer's V     0.150126  2.139911e-36
+   MultipleLines     chi-square        Cramer's V     0.040109  3.464383e-03
+    PhoneService     chi-square        Cramer's V     0.011398  3.387825e-01
+          gender     chi-square        Cramer's V     0.008291  4.865787e-01
+          tenure Mann-Whitney U |rank-biserial r|     0.479734 2.419636e-208
+    TotalCharges Mann-Whitney U |rank-biserial r|     0.303464  1.995985e-84
+  MonthlyCharges Mann-Whitney U |rank-biserial r|     0.241571  3.311628e-54
+  [figure] outputs/figures/04_correlation_heatmap.png
+  [figure] outputs/figures/05_tenure_vs_charges.png
+
+==========================================================================================
+PHASE 3 - DATA PREPARATION
+==========================================================================================
+def engineer(frame: pd.DataFrame) -> pd.DataFrame:
+    """Row-wise transformations only (no statistics learned from data -> safe before the split)."""
+    f = frame.copy()
+    f["TotalCharges"] = pd.to_numeric(f["TotalCharges"].astype(str).str.strip().replace("", np.nan), errors="coerce")
+    f["TotalCharges"] = f["TotalCharges"].fillna(0.0)  # blank only when tenure == 0 -> nothing billed yet
+    f["SeniorCitizen"] = f["SeniorCitizen"].map({0: "No", 1: "Yes", "0": "No", "1": "Yes",
+                                                 "No": "No", "Yes": "Yes"}).fillna("No")
+    f["num_services"] = (f[SERVICES] == "Yes").sum(axis=1) + (f["InternetService"] != "No").astype(int)
+    f["avg_monthly_spend"] = np.where(f["tenure"] > 0, f["TotalCharges"] / f["tenure"].clip(lower=1),
+                                      f["MonthlyCharges"])
+    f["charge_delta"] = f["MonthlyCharges"] - f["avg_monthly_spend"]  # recent price increase signal
+    f["auto_pay"] = np.where(f["PaymentMethod"].str.contains("automatic"), "Yes", "No")
+    f["tenure_bucket"] = pd.cut(f["tenure"], [-1, 6, 12, 24, 48, 1000],
+                                labels=["0-6", "7-12", "13-24", "25-48", "49+"]).astype(str)
+    return f.drop(columns=["customerID", "Churn", "churn"], errors="ignore")
+
+Numeric: ['tenure', 'MonthlyCharges', 'TotalCharges', 'num_services', 'avg_monthly_spend', 'charge_delta']
+Categorical: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'auto_pay', 'tenure_bucket']
+Train (5634, 24), Test (1409, 24), churn train=0.265 test=0.265
+          feature  lower_fence  upper_fence  n_outliers
+           tenure   -60.000000   124.000000           0
+   MonthlyCharges   -45.843750   171.506250           0
+     TotalCharges -4746.300000  8985.100000           0
+     num_services    -4.000000    12.000000           0
+avg_monthly_spend   -45.582878   172.092840           0
+     charge_delta    -4.641087     4.597986         422
+IsolationForest flagged 3.0% of train; churn among them = 0.142 vs 0.265 overall -> kept (informative, not errors).
+  [figure] outputs/figures/06_outlier_boxplots.png
+         size  churn_rate  tenure  monthly  services
+cluster                                             
+0        1655        0.14   28.03    25.82      1.55
+1         820        0.41   16.95    76.36      4.33
+2        1322        0.49   12.95    73.00      4.00
+3        1837        0.16   57.49    89.25      6.58
+  [figure] outputs/figures/07_kmeans_segments.png
+  [figure] outputs/figures/08_mutual_information.png
+cat__Contract_Month-to-month           0.0791
+num__tenure                            0.0716
+cat__OnlineSecurity_No                 0.0657
+cat__TechSupport_No                    0.0603
+cat__Contract_Two year                 0.0580
+num__MonthlyCharges                    0.0514
+cat__InternetService_Fiber optic       0.0496
+cat__PaymentMethod_Electronic check    0.0458
+num__charge_delta                      0.0438
+cat__OnlineBackup_No                   0.0419
+dtype: float64
+
+==========================================================================================
+PHASE 4 - MODELING
+==========================================================================================
+  Baseline (majority)          ROC-AUC=0.5000  PR-AUC=0.2654  recall=0.000
+  Logistic Regression          ROC-AUC=0.8470  PR-AUC=0.6603  recall=0.793
+  Decision Tree                ROC-AUC=0.8251  PR-AUC=0.6127  recall=0.778
+  Random Forest                ROC-AUC=0.8444  PR-AUC=0.6555  recall=0.712
+  Hist Gradient Boosting       ROC-AUC=0.8396  PR-AUC=0.6457  recall=0.513
+  SVM (RBF)                    ROC-AUC=0.8285  PR-AUC=0.6114  recall=0.769
+  k-NN (k=25)                  ROC-AUC=0.8335  PR-AUC=0.6146  recall=0.569
+  Neural Net (MLP 64-32)       ROC-AUC=0.8448  PR-AUC=0.6607  recall=0.524
+  XGBoost                      ROC-AUC=0.8384  PR-AUC=0.6482  recall=0.506
+                    model  roc_auc  pr_auc  recall  precision      f1  accuracy  roc_auc_std  fit_seconds
+0     Logistic Regression   0.8470  0.6603  0.7933     0.5194  0.6276    0.7503       0.0109       0.2266
+1  Neural Net (MLP 64-32)   0.8448  0.6607  0.5244     0.6677  0.5848    0.8032       0.0103       0.9724
+2           Random Forest   0.8444  0.6555  0.7117     0.5647  0.6296    0.7780       0.0090       2.9702
+3  Hist Gradient Boosting   0.8396  0.6457  0.5130     0.6518  0.5738    0.7980       0.0085       8.6843
+4                 XGBoost   0.8384  0.6482  0.5064     0.6553  0.5706    0.7980       0.0077       2.4276
+5             k-NN (k=25)   0.8335  0.6146  0.5686     0.6272  0.5962    0.7957       0.0090       0.3540
+6               SVM (RBF)   0.8285  0.6114  0.7686     0.5231  0.6223    0.7526       0.0096      11.7130
+7           Decision Tree   0.8251  0.6127  0.7779     0.5069  0.6136    0.7400       0.0086       0.2220
+8     Baseline (majority)   0.5000  0.2654  0.0000     0.0000  0.0000    0.7346       0.0000       0.1732
+  [figure] outputs/figures/09_cv_leaderboard.png

@@ -1,0 +1,57 @@
+,odds_ratio
+cat__Contract_Two year,0.513851738137913
+num__tenure,0.5868523048283408
+cat__PaperlessBilling_No,0.7339788958327205
+cat__MultipleLines_No,0.7543142458359617
+cat__Dependents_Yes,0.8561653235773443
+cat__SeniorCitizen_No,0.8988349565408724
+cat__tenure_bucket_25-48,0.935604667893745
+cat__tenure_bucket_13-24,0.9848427770840594
+cat__DeviceProtection_No,1.0
+cat__DeviceProtection_No internet service,1.0
+cat__DeviceProtection_Yes,1.0
+cat__TechSupport_No internet service,1.0
+cat__TechSupport_Yes,1.0
+cat__StreamingTV_No,1.0
+cat__StreamingTV_No internet service,1.0
+cat__StreamingMovies_No internet service,1.0
+cat__tenure_bucket_49+,1.0
+cat__Contract_One year,1.0
+cat__PaymentMethod_Bank transfer (automatic),1.0
+cat__PaymentMethod_Credit card (automatic),1.0
+cat__PaymentMethod_Mailed check,1.0
+cat__auto_pay_No,1.0
+cat__auto_pay_Yes,1.0
+cat__StreamingMovies_No,1.0
+cat__OnlineBackup_No internet service,1.0
+cat__OnlineBackup_Yes,1.0
+cat__OnlineSecurity_Yes,1.0
+num__MonthlyCharges,1.0
+num__TotalCharges,1.0
+num__num_services,1.0
+num__charge_delta,1.0
+cat__gender_Female,1.0
+cat__gender_Male,1.0
+cat__SeniorCitizen_Yes,1.0
+cat__Partner_No,1.0
+cat__Partner_Yes,1.0
+cat__PhoneService_No,1.0
+cat__tenure_bucket_7-12,1.0
+cat__PhoneService_Yes,1.0
+cat__MultipleLines_No phone service,1.0
+cat__MultipleLines_Yes,1.0
+cat__InternetService_DSL,1.0
+cat__OnlineSecurity_No internet service,1.0
+cat__InternetService_No,1.0
+cat__Dependents_No,1.0000002131375576
+cat__PaperlessBilling_Yes,1.0000003167505018
+num__avg_monthly_spend,1.0972462276699528
+cat__OnlineBackup_No,1.1294265926142735
+cat__StreamingTV_Yes,1.2389564523522223
+cat__StreamingMovies_Yes,1.2720007498611687
+cat__TechSupport_No,1.3654243950272558
+cat__PaymentMethod_Electronic check,1.439132366904006
+cat__OnlineSecurity_No,1.4568721870967491
+cat__tenure_bucket_0-6,1.905536090850386
+cat__Contract_Month-to-month,2.0614354782465423
+cat__InternetService_Fiber optic,2.119830979082617

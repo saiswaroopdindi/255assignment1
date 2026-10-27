@@ -1,0 +1,20 @@
+feature,test,effect_type,effect_size,p_value
+Contract,chi-square,Cramer's V,0.4101156965761409,5.863038300673393e-258
+OnlineSecurity,chi-square,Cramer's V,0.3474004326740552,2.661149635176552e-185
+TechSupport,chi-square,Cramer's V,0.3429161982469257,1.4430840279998987e-180
+InternetService,chi-square,Cramer's V,0.32245455521230887,9.571788222840544e-160
+PaymentMethod,chi-square,Cramer's V,0.30335862555407056,3.6823546520098007e-140
+OnlineBackup,chi-square,Cramer's V,0.2923155121954445,2.079759216086427e-131
+DeviceProtection,chi-square,Cramer's V,0.281579732968073,5.505219496457244e-122
+StreamingMovies,chi-square,Cramer's V,0.23095080906926801,2.667756755723681e-82
+StreamingTV,chi-square,Cramer's V,0.2305023384466809,5.528994485739183e-82
+PaperlessBilling,chi-square,Cramer's V,0.19149814355338285,4.0733546686659864e-58
+Dependents,chi-square,Cramer's V,0.1638703967886369,4.924921661215422e-43
+SeniorCitizen,chi-square,Cramer's V,0.15045309974200427,1.5100668050923772e-36
+Partner,chi-square,Cramer's V,0.15012578474988478,2.139911344075994e-36
+MultipleLines,chi-square,Cramer's V,0.04010925283378871,0.0034643829548773003
+PhoneService,chi-square,Cramer's V,0.011398285522718045,0.3387825358066928
+gender,chi-square,Cramer's V,0.008290505631771371,0.48657873605618596
+tenure,Mann-Whitney U,|rank-biserial r|,0.4797343510572577,2.419635517951866e-208
+TotalCharges,Mann-Whitney U,|rank-biserial r|,0.30346363965438317,1.9959848938845829e-84
+MonthlyCharges,Mann-Whitney U,|rank-biserial r|,0.24157137914125104,3.311627651988586e-54

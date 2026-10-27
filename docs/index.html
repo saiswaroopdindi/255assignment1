@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CMPE 255 · Assignment 1</title>
+  <style>
+    :root{--ink:#152238;--muted:#5f6b7a;--paper:#f6f8fb;--card:#fff;--accent:#0b7285;--line:#dce3ea}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    main{max-width:1040px;margin:auto;padding:48px 24px 72px}.eyebrow{color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
+    h1{font-size:clamp(2.4rem,6vw,5rem);line-height:1.02;margin:.3rem 0 1rem;max-width:780px} h2{margin-top:0} p{color:var(--muted)}
+    .hero{padding:30px 0 42px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 8px 24px #102a430b}
+    a{color:var(--accent);font-weight:700;text-decoration:none}a:hover{text-decoration:underline}.links{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px}.tag{display:inline-block;background:#e4f3f5;color:#075b68;border-radius:999px;padding:3px 10px;margin:2px;font-size:.85rem}
+    footer{margin-top:40px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:.9rem}
+  </style>
+</head>
+<body><main>
+  <section class="hero"><div class="eyebrow">CMPE 255 · Fall 2026</div><h1>Data science with an AI coding assistant, end to end.</h1><p>A reproducible two-part portfolio covering CRISP-DM, model comparison, business-aware evaluation, deployment, and replication of five data-science experiments.</p><div class="links"><a href="../README.md">Repository README →</a><a href="../part1_telco_churn/outputs/RESULTS.md">Part 1 results →</a></div></section>
+  <section class="grid">
+    <article class="card"><h2>Part 1 · Telco churn</h2><p>CRISP-DM case study on 7,043 customers with data-quality checks, EDA, feature engineering, clustering, nine classifiers, threshold selection, explainability, a model card, and a Streamlit scorer.</p><span class="tag">Logistic regression</span><span class="tag">ROC-AUC 0.846</span><span class="tag">Cost ↓ 68.1%</span><div class="links"><a href="../part1_telco_churn/README.md">Read the project →</a><a href="../part1_telco_churn/VIDEO_SCRIPT.md">Video script →</a></div></article>
+    <article class="card"><h2>Part 2 · Replication</h2><p>Five reproducible projects are included: NYC taxi, customer segmentation, market basket mining, anomaly detection, and time-series forecasting. Each has a script, notebook, prompt record, and dashboard entry.</p><span class="tag">5 experiments</span><span class="tag">Leakage-safe design</span><span class="tag">Temporal validation</span><div class="links"><a href="../part2_ds_replication/README.md">Read the project →</a><a href="../part2_ds_replication/VIDEO_SCRIPT.md">Video script →</a></div></article>
+    <article class="card"><h2>Reproducibility</h2><p>Part 1 has been executed locally and writes metrics, figures, a model card, a Markdown results paraphrase, and a generated article draft. Part 2 awaits a network-enabled run for its external datasets.</p><div class="links"><a href="../requirements.txt">Dependencies →</a><a href="../run_all.sh">Run everything →</a></div></article>
+  </section>
+  <footer>Student: Sai Swaroop Dindi · Videos and the exported transcript should be added before final submission.</footer>
+</main></body></html>

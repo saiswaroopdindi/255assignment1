@@ -1,0 +1,10 @@
+==========================================================================================
+12 · Time-Series Forecasting (bike-share demand)
+==========================================================================================
+
+------------------------------------------------------------------------------------------
+2 · Data understanding
+------------------------------------------------------------------------------------------
+Downloading https://archive.ics.uci.edu/static/public/275/bike+sharing+dataset.zip
+  -> /Users/saiswaroop/Desktop/Project/255/1st assignment/assignment1/part2_ds_replication/data/bike_sharing.zip
+Download failed (<urlopen error [Errno 8] nodename nor servname provided, or not known>). Download https://archive.ics.uci.edu/static/public/275/bike+sharing+dataset.zip manually and save it as /Users/saiswaroop/Desktop/Project/255/1st assignment/assignment1/part2_ds_replication/data/bike_sharing.zip

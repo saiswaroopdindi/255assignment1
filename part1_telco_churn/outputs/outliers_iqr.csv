@@ -1,0 +1,7 @@
+feature,lower_fence,upper_fence,n_outliers
+tenure,-60.0,124.0,0
+MonthlyCharges,-45.84374999999999,171.50625,0
+TotalCharges,-4746.3,8985.1,0
+num_services,-4.0,12.0,0
+avg_monthly_spend,-45.58287795834228,172.092840075498,0
+charge_delta,-4.641087372448979,4.597985756802718,422

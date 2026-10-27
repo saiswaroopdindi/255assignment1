@@ -1,0 +1,263 @@
+{
+  "cost_matrix": {
+    "false_negative": 500,
+    "false_positive": 100
+  },
+  "n_rows": 7043,
+  "n_cols": 21,
+  "n_duplicate_ids": 0,
+  "n_blank_totalcharges": 11,
+  "churn_rate": 0.2653698707936959,
+  "top_associated_features": [
+    "Contract",
+    "OnlineSecurity",
+    "TechSupport",
+    "InternetService",
+    "PaymentMethod"
+  ],
+  "numeric_effects": {
+    "tenure": 0.48,
+    "TotalCharges": 0.303,
+    "MonthlyCharges": 0.242
+  },
+  "n_train": 5634,
+  "n_test": 1409,
+  "isolation_forest_outlier_pct": 0.029996450124245653,
+  "churn_rate_among_outliers": 0.14201183431952663,
+  "kmeans_silhouette": {
+    "2": 0.3524458744834476,
+    "3": 0.3263189589785731,
+    "4": 0.3437527116827296,
+    "5": 0.3308803776489321,
+    "6": 0.33535263584310965,
+    "7": 0.302803131661834,
+    "8": 0.3042261680597435
+  },
+  "kmeans_k": 4,
+  "cluster_profiles": [
+    {
+      "cluster": 0,
+      "size": 1655,
+      "churn_rate": 0.136,
+      "tenure": 28.031,
+      "monthly": 25.822,
+      "services": 1.545
+    },
+    {
+      "cluster": 1,
+      "size": 820,
+      "churn_rate": 0.415,
+      "tenure": 16.955,
+      "monthly": 76.364,
+      "services": 4.327
+    },
+    {
+      "cluster": 2,
+      "size": 1322,
+      "churn_rate": 0.487,
+      "tenure": 12.952,
+      "monthly": 72.998,
+      "services": 4.0
+    },
+    {
+      "cluster": 3,
+      "size": 1837,
+      "churn_rate": 0.156,
+      "tenure": 57.487,
+      "monthly": 89.253,
+      "services": 6.58
+    }
+  ],
+  "top_mi_features": [
+    "cat__Contract_Month-to-month",
+    "num__tenure",
+    "cat__OnlineSecurity_No",
+    "cat__TechSupport_No",
+    "cat__Contract_Two year",
+    "num__MonthlyCharges",
+    "cat__InternetService_Fiber optic",
+    "cat__PaymentMethod_Electronic check",
+    "num__charge_delta",
+    "cat__OnlineBackup_No"
+  ],
+  "cv_leaderboard": [
+    {
+      "model": "Logistic Regression",
+      "roc_auc": 0.847,
+      "pr_auc": 0.6603,
+      "recall": 0.7933,
+      "precision": 0.5194,
+      "f1": 0.6276,
+      "accuracy": 0.7503,
+      "roc_auc_std": 0.0109,
+      "fit_seconds": 0.224
+    },
+    {
+      "model": "Neural Net (MLP 64-32)",
+      "roc_auc": 0.8448,
+      "pr_auc": 0.6607,
+      "recall": 0.5244,
+      "precision": 0.6677,
+      "f1": 0.5848,
+      "accuracy": 0.8032,
+      "roc_auc_std": 0.0103,
+      "fit_seconds": 0.9565
+    },
+    {
+      "model": "Random Forest",
+      "roc_auc": 0.8444,
+      "pr_auc": 0.6555,
+      "recall": 0.7117,
+      "precision": 0.5647,
+      "f1": 0.6296,
+      "accuracy": 0.778,
+      "roc_auc_std": 0.009,
+      "fit_seconds": 2.953
+    },
+    {
+      "model": "Hist Gradient Boosting",
+      "roc_auc": 0.8396,
+      "pr_auc": 0.6457,
+      "recall": 0.513,
+      "precision": 0.6518,
+      "f1": 0.5738,
+      "accuracy": 0.798,
+      "roc_auc_std": 0.0085,
+      "fit_seconds": 4.7125
+    },
+    {
+      "model": "XGBoost",
+      "roc_auc": 0.8384,
+      "pr_auc": 0.6482,
+      "recall": 0.5064,
+      "precision": 0.6553,
+      "f1": 0.5706,
+      "accuracy": 0.798,
+      "roc_auc_std": 0.0077,
+      "fit_seconds": 1.697
+    },
+    {
+      "model": "k-NN (k=25)",
+      "roc_auc": 0.8335,
+      "pr_auc": 0.6146,
+      "recall": 0.5686,
+      "precision": 0.6272,
+      "f1": 0.5962,
+      "accuracy": 0.7957,
+      "roc_auc_std": 0.009,
+      "fit_seconds": 0.2973
+    },
+    {
+      "model": "SVM (RBF)",
+      "roc_auc": 0.8285,
+      "pr_auc": 0.6114,
+      "recall": 0.7686,
+      "precision": 0.5231,
+      "f1": 0.6223,
+      "accuracy": 0.7526,
+      "roc_auc_std": 0.0096,
+      "fit_seconds": 11.393
+    },
+    {
+      "model": "Decision Tree",
+      "roc_auc": 0.8251,
+      "pr_auc": 0.6127,
+      "recall": 0.7779,
+      "precision": 0.5069,
+      "f1": 0.6136,
+      "accuracy": 0.74,
+      "roc_auc_std": 0.0086,
+      "fit_seconds": 0.2237
+    },
+    {
+      "model": "Baseline (majority)",
+      "roc_auc": 0.5,
+      "pr_auc": 0.2654,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "accuracy": 0.7346,
+      "roc_auc_std": 0.0,
+      "fit_seconds": 0.1666
+    }
+  ],
+  "pytorch_dnn": null,
+  "tuned": {
+    "Logistic Regression": {
+      "cv_roc_auc": 0.8479400011612127,
+      "params": {
+        "clf__C": 0.0745934328572655,
+        "clf__penalty": "l1"
+      }
+    },
+    "Hist Gradient Boosting": {
+      "cv_roc_auc": 0.8388857410710843,
+      "params": {
+        "clf__l2_regularization": 0.09643857615941427,
+        "clf__learning_rate": 0.03802259770124277,
+        "clf__max_iter": 314,
+        "clf__max_leaf_nodes": 14,
+        "clf__min_samples_leaf": 84
+      }
+    },
+    "XGBoost": {
+      "cv_roc_auc": 0.8479154120598746,
+      "params": {
+        "clf__colsample_bytree": 0.5779972601681014,
+        "clf__learning_rate": 0.011900590783184251,
+        "clf__max_depth": 6,
+        "clf__min_child_weight": 4,
+        "clf__n_estimators": 230,
+        "clf__subsample": 0.608233797718321
+      }
+    }
+  },
+  "best_model": "Logistic Regression",
+  "cost_optimal_threshold": 0.36999999999999994,
+  "test_at_0.5": {
+    "threshold": 0.5,
+    "roc_auc": 0.8454390451832906,
+    "pr_auc": 0.6525707154801396,
+    "accuracy": 0.7437899219304471,
+    "precision": 0.5111492281303602,
+    "recall": 0.7967914438502673,
+    "f1": 0.6227795193312434,
+    "brier": 0.16561105367717885,
+    "tp": 298,
+    "fp": 285,
+    "fn": 76,
+    "tn": 750,
+    "business_cost": 66500
+  },
+  "test_at_cost_threshold": {
+    "threshold": 0.36999999999999994,
+    "roc_auc": 0.8454390451832906,
+    "pr_auc": 0.6525707154801396,
+    "accuracy": 0.6820440028388929,
+    "precision": 0.4501347708894879,
+    "recall": 0.893048128342246,
+    "f1": 0.5985663082437276,
+    "brier": 0.16561105367717885,
+    "tp": 334,
+    "fp": 408,
+    "fn": 40,
+    "tn": 627,
+    "business_cost": 60800
+  },
+  "test_cost_no_model": 187000,
+  "test_cost_savings_pct": 0.6748663101604278,
+  "test_baseline_roc_auc": 0.5,
+  "top20_capture_rate": 0.5,
+  "top20_lift": 2.5071174377224197,
+  "top_permutation_features": {
+    "tenure": 0.0414,
+    "Contract": 0.0394,
+    "tenure_bucket": 0.0165,
+    "InternetService": 0.014,
+    "OnlineSecurity": 0.0034,
+    "PaymentMethod": 0.0029,
+    "TechSupport": 0.0028,
+    "MultipleLines": 0.0028
+  },
+  "runtime_seconds": 36.4
+}

@@ -1,0 +1,57 @@
+,mi
+cat__Contract_Month-to-month,0.07907005699257041
+num__tenure,0.07161085287270086
+cat__OnlineSecurity_No,0.06569381585567569
+cat__TechSupport_No,0.060253270153480365
+cat__Contract_Two year,0.058039785418594336
+num__MonthlyCharges,0.05138295966559636
+cat__InternetService_Fiber optic,0.04960239590301341
+cat__PaymentMethod_Electronic check,0.04580462743813363
+num__charge_delta,0.043815575169912524
+cat__OnlineBackup_No,0.04188552268756118
+num__TotalCharges,0.03853880374965368
+cat__tenure_bucket_49+,0.03720567117836926
+cat__OnlineSecurity_No internet service,0.03518143897401038
+cat__OnlineBackup_No internet service,0.03494634326891077
+num__avg_monthly_spend,0.032916749546933355
+cat__DeviceProtection_No internet service,0.03265697597746553
+cat__tenure_bucket_0-6,0.03189835666060081
+cat__StreamingTV_No internet service,0.03125445312259978
+num__num_services,0.029733728607485244
+cat__PaperlessBilling_No,0.02956587839302638
+cat__InternetService_No,0.027918056255822332
+cat__TechSupport_No internet service,0.027787219559258114
+cat__Dependents_No,0.02635254650027785
+cat__StreamingMovies_No internet service,0.02584267817088426
+cat__auto_pay_No,0.02480284342434702
+cat__StreamingMovies_No,0.02259232871589001
+cat__DeviceProtection_No,0.0217755321918236
+cat__OnlineSecurity_Yes,0.018682211458945552
+cat__PaperlessBilling_Yes,0.017327965855810534
+cat__TechSupport_Yes,0.015952291374732086
+cat__auto_pay_Yes,0.01568444667087987
+cat__Partner_Yes,0.01556761551135133
+cat__MultipleLines_No,0.014071296928810817
+cat__PaymentMethod_Credit card (automatic),0.011621798888674872
+cat__PaymentMethod_Bank transfer (automatic),0.010373319716719953
+cat__SeniorCitizen_No,0.009785754027431315
+cat__Dependents_Yes,0.00970587397787881
+cat__Contract_One year,0.008596411328343878
+cat__tenure_bucket_7-12,0.008468963338670532
+cat__InternetService_DSL,0.008290572073029301
+cat__gender_Female,0.00756307994165617
+cat__StreamingTV_No,0.007461450187017604
+cat__gender_Male,0.004913388352450587
+cat__OnlineBackup_Yes,0.004858064610341772
+cat__StreamingMovies_Yes,0.003971308482582314
+cat__StreamingTV_Yes,0.003218591825263406
+cat__PaymentMethod_Mailed check,0.0014130874852931186
+cat__Partner_No,0.0010000714070537153
+cat__tenure_bucket_13-24,0.0009898807251076391
+cat__SeniorCitizen_Yes,0.0005920037401208056
+cat__MultipleLines_No phone service,0.0
+cat__MultipleLines_Yes,0.0
+cat__PhoneService_No,0.0
+cat__DeviceProtection_Yes,0.0
+cat__tenure_bucket_25-48,0.0
+cat__PhoneService_Yes,0.0
