@@ -81,3 +81,48 @@ assignment1/
 - Ask the AI for a *process* (CRISP-DM, validation design), not only a model, and verify leakage yourself.
 - Choose metrics for the decision: cost-weighted thresholds, PR-AUC for rare events, MASE against a naive forecast, hold-out rule survival.
 - Generate reports from code so the write-up never drifts from the results.
+## Additional project: Sentiment Analysis with Twitter Sentiment Dataset
+
+This section preserves the documentation already present in the GitHub repository before the assignment files were added.
+
+This repository contains a simple Python script to train and run a sentiment analysis model on the Kaggle/Twitter Sentiment dataset (training.1600000.processed.noemoticon.csv).
+
+Dataset notes
+- Format: CSV with 6 fields: polarity, id, date, query, user, text.
+- Polarity: 0 = negative, 2 = neutral, 4 = positive.
+- The training labels were heuristically created from emoticons: tweets with :) treated as positive, :( as negative.
+
+Files
+- `main.py`: trainer and predictor CLI.
+- `requirements.txt`: Python dependencies.
+
+Quickstart
+1. Install dependencies:
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+
+2. Train a model:
+
+- Sample 5% (quick):
+
+```bash
+python3 main.py --train --data archive-2/training.1600000.processed.noemoticon.csv --sample 0.05 --model-out models/sentiment.joblib
+```
+
+- Full dataset (may take long and require significant RAM/CPU):
+
+```bash
+python3 main.py --train --data archive-2/training.1600000.processed.noemoticon.csv --model-out models/sentiment.joblib
+```
+
+3. Predict:
+
+```bash
+python3 main.py --predict "I love this!" "This is terrible." --model models/sentiment.joblib
+```
+
+Acknowledgements
+- Dataset inspired by the Kaggle Twitter Sentiment dataset.
